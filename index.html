@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genshin Impact: Секретное Событие!</title>
+    <style>
+        body {
+            background: radial-gradient(circle, #1a1c2c 0%, #0a0a0a 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            border: 2px solid #dbb66d; 
+            box-shadow: 0 0 40px rgba(219, 182, 109, 0.4);
+            max-width: 500px;
+            transition: all 0.3s ease;
+        }
+
+        h1 {
+            color: #dbb66d;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(219, 182, 109, 0.5);
+        }
+
+        .genshin-btn {
+            background: linear-gradient(135deg, #dbb66d 0%, #f1d9a0 100%);
+            color: #332a16;
+            border: none;
+            padding: 18px 45px;
+            font-size: 22px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.4);
+            text-transform: uppercase;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        #secret-content {
+            display: none;
+            margin-top: 25px;
+            animation: shake 0.5s infinite; /* Тряска для паники */
+        }
+
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            50% { transform: translate(-1px, 2px) rotate(1deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+
+        .troll-image {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 15px;
+            border: 5px solid #ff4d4d;
+            box-shadow: 0 0 30px rgba(255, 77, 77, 0.8);
+        }
+
+        .troll-text {
+            font-size: 40px;
+            font-weight: 900;
+            color: #ff4d4d;
+            text-shadow: 2px 2px 0px black;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="card">
+        <h1 id="title">Молитва: 1600 Примогемов</h1>
+        <p id="desc">Нажми, чтобы забрать Камни Истока!</p>
+        
+        <button class="genshin-btn" id="main-btn" onclick="revealSecret()">ЗАБРАТЬ</button>
+
+        <div id="secret-content">
+            <img src="sanzhar.jpg" class="troll-image" onerror="this.src='https://via.placeholder.com/400x400?text=Sanzhar+GAY'">
+            <div class="troll-text">САНЖАР ГЕЙ! 🏳️‍🌈</div>
+        </div>
+    </div>
+
+    <audio id="troll-audio" loop>
+        <source src="https://www.myinstants.com/media/sounds/zhestkii-ston-artioma.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function revealSecret() {
+            // Включаем звук на полную громкость
+            var audio = document.getElementById('troll-audio');
+            audio.volume = 1.0;
+            audio.play();
+
+            // Меняем интерфейс
+            document.getElementById('main-btn').style.display = 'none';
+            document.getElementById('desc').style.display = 'none';
+            document.getElementById('title').innerText = 'УПС! РАЗОБЛАЧЕНИЕ';
+            document.getElementById('secret-content').style.display = 'block';
+            
+            // Жесткий визуальный эффект
+            document.getElementById('card').style.borderColor = '#ff4d4d';
+            document.body.style.background = 'red';
+            setTimeout(() => { document.body.style.background = 'black'; }, 100);
+            setInterval(() => {
+                document.body.style.background = (document.body.style.background == 'black' ? '#300' : 'black');
+            }, 200);
+        }
+    </script>
+
+</body>
+</html>
